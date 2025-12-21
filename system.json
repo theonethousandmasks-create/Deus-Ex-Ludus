@@ -1,18 +1,15 @@
 {
   "id": "Deus-Ex-Ludus",
   "title": "Deus Ex Ludus",
-  "description": "A d100 target number system by FoxMaid Games",
-  "authors": [{
-    "name": "FoxMaid Games"
-  }],
-  "url": "https://github.com/FoxMaidGames/Deus-Ex-Ludus",
-  "license": "LICENSE",
-  "readme": "README.md",
+  "description": "A d100 target number system by FoxMaid Games (Beta)",
   "version": "0.1.0",
   "compatibility": {
     "minimum": "13.351",
     "verified": "13.351"
   },
+  "authors": [{
+    "name": "FoxMaid Games"
+  }],
   "esmodules": ["deus-ex-ludus.mjs"],
   "styles": ["styles/system-styles.css"],
   "languages": [{
@@ -20,39 +17,25 @@
     "name": "English",
     "path": "lang/en.json"
   }],
-  "packs": [],
-  "packFolders": [],
-  "manifest": "https://github.com/FoxMaidGames/Deus-Ex-Ludus/releases/download/v0.1.0/system.json",
-  "download": "https://github.com/FoxMaidGames/Deus-Ex-Ludus/releases/download/v0.1.0/Deus-Ex-Ludus.zip",
-  "background": "",
+  "documentTypes": {
+    "Actor": {
+      "character": {},
+      "npc": {}
+    },
+    "Item": {
+      "skill": {},
+      "weapon": {},
+      "armor": {}
+    }
+  },
   "initiative": "1d100",
   "grid": {
     "distance": 5,
     "units": "m"
   },
   "primaryTokenAttribute": "attributes.health",
-  "secondaryTokenAttribute": "attributes.faith",
-  "documentTypes": {
-    "Actor": {
-      "character": {},
-      "npc": {},
-      "settlement": {}
-    },
-    "Item": {
-      "skill": {},
-      "gear": {},
-      "relic": {}
-    },
-    "Card": {},
-    "Cards": {},
-    "Combat": {},
-    "Combatant": {
-      "player": {}
-    }
-  },
-  "flags": {
-    "hotReload": {
-      "extensions": ["hbs", "css", "json"]
-    }
-  }
+  "secondaryTokenAttribute": null,
+  "url": "https://github.com/FoxMaidGames/Deus-Ex-Ludus",
+  "manifest": "https://github.com/FoxMaidGames/Deus-Ex-Ludus/releases/download/v0.1.0/system.json",
+  "download": "https://github.com/FoxMaidGames/Deus-Ex-Ludus/releases/download/v0.1.0/Deus-Ex-Ludus.zip"
 }
