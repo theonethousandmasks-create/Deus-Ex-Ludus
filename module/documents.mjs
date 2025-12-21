@@ -1,4 +1,4 @@
-import { Actor, Item, ChatMessage, Roll } from "foundry";
+import { Actor, Item, ChatMessage, Roll } from "foundry:api";
 
 export class SystemActor extends Actor {
   async rollSkill(skillName) {

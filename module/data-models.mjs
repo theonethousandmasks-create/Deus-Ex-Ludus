@@ -1,10 +1,10 @@
-const { NumberField, SchemaField, StringField } = foundry.data.fields;
+import { NumberField, SchemaField, StringField, TypeDataModel } from "foundry:api";
 
 /* -------------------------------------------- */
 /*  Actor Models                                */
 /* -------------------------------------------- */
 
-class ActorDataModel extends foundry.abstract.TypeDataModel {
+class ActorDataModel extends TypeDataModel {
   static defineSchema() {
     return {
       attributes: new SchemaField({
@@ -39,7 +39,7 @@ export class NpcDataModel extends ActorDataModel {
 /*  Item Models                                 */
 /* -------------------------------------------- */
 
-class ItemDataModel extends foundry.abstract.TypeDataModel {
+class ItemDataModel extends TypeDataModel {
   static defineSchema() {
     return {
       description: new StringField({ required: true, blank: true })

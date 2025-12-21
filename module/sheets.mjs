@@ -1,4 +1,4 @@
-import { ActorSheet, ItemSheet, mergeObject } from "foundry";
+import { ActorSheet, ItemSheet, mergeObject } from "foundry:api";
 
 export class CharacterSheet extends ActorSheet {
   static get defaultOptions() {
@@ -7,7 +7,7 @@ export class CharacterSheet extends ActorSheet {
       template: "templates/actor/character-sheet.html",
       width: 600,
       height: 600,
-      tabs: [{ navSelector: ".sheet-tabs", contentSelector: ".sheet-body", initial: "skills" }]
+      tabs: [{ navSelector: ".tabs", contentSelector: ".sheet-body", group: "primary", initial: "skills" }]
     });
   }
 
