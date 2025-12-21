@@ -5,9 +5,12 @@ export class CharacterSheet extends ActorSheet {
     return mergeObject(super.defaultOptions, {
       classes: ["Deus-Ex-Ludus", "sheet", "actor"],
       template: "templates/actor/character-sheet.html",
-      width: 600,
-      height: 600,
-      tabs: [{ navSelector: ".sheet-tabs", contentSelector: ".sheet-body", initial: "skills" }]
+      width: 800,
+      height: 800,
+      tabs: [
+        { navSelector: ".sheet-tabs", contentSelector: ".sheet-body", initial: "attributes" },
+        { navSelector: ".item-tabs", contentSelector: ".tab", initial: "all" }
+      ]
     });
   }
 
