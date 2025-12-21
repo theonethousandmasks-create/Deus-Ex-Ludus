@@ -1,0 +1,39 @@
+{
+  "id": "deus-ex-ludus",
+  "title": "Deus Ex Ludus",
+  "description": "A d100 target number system by FoxMaid Games (Beta)",
+  "version": "0.1.0",
+  "compatibility": {
+    "minimum": "13.351",
+    "verified": "13.351"
+  },
+  "authors": [{
+    "name": "FoxMaid Games"
+  }],
+  "esmodules": ["deus-ex-ludus.mjs"],
+  "styles": ["styles/system-styles.css"],
+  "languages": [{
+    "lang": "en",
+    "name": "English",
+    "path": "lang/en.json"
+  }],
+  "documentTypes": {
+    "Actor": {
+      "character": {},
+      "npc": {}
+    },
+    "Item": {
+      "skill": {},
+      "weapon": {},
+      "armor": {}
+    }
+  },
+  "initiative": "1d100",
+  "grid": {
+    "distance": 5,
+    "units": "m"
+  },
+  "primaryTokenAttribute": "attributes.health",
+  "secondaryTokenAttribute": null
+}</content>
+<parameter name="filePath">d:/D.E.L. Development/Clones/Deus-Ex-Ludus/system.json
