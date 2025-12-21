@@ -7,10 +7,7 @@ export class CharacterSheet extends ActorSheet {
       template: "templates/actor/character-sheet.html",
       width: 800,
       height: 800,
-      tabs: [
-        { navSelector: ".sheet-tabs", contentSelector: ".sheet-body", initial: "attributes" },
-        { navSelector: ".item-tabs", contentSelector: ".tab", initial: "all" }
-      ]
+      tabs: [{ navSelector: ".sheet-tabs", contentSelector: ".sheet-body", initial: "attributes" }]
     });
   }
 
@@ -95,6 +92,17 @@ export class RelicSheet extends ItemSheet {
       template: "templates/item/relic-sheet.html",
       width: 400,
       height: 400
+    });
+  }
+}
+
+export class SettlementSheet extends ActorSheet {
+  static get defaultOptions() {
+    return mergeObject(super.defaultOptions, {
+      classes: ["Deus-Ex-Ludus", "sheet", "actor"],
+      template: "templates/actor/settlement-sheet.html",
+      width: 600,
+      height: 600
     });
   }
 }

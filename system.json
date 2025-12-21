@@ -20,7 +20,8 @@
   "documentTypes": {
     "Actor": {
       "character": {},
-      "npc": {}
+      "npc": {},
+      "settlement": {}
     },
     "Item": {
       "skill": {},

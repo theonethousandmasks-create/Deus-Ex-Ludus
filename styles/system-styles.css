@@ -64,5 +64,35 @@
 .item-controls {
   display: flex;
   gap: 0.5rem;
+}
+
+.effects-list {
+  list-style: none;
+  padding: 0;
+}
+
+.effect {
+  padding: 0.5rem;
+  border: 1px solid #ccc;
+  margin-bottom: 0.5rem;
+  align-items: center;
+}
+
+.effect-img {
+  width: 32px;
+  height: 32px;
+  margin-right: 0.5rem;
+}
+
+.effect-name {
+  margin: 0;
+  flex: 1;
+}
+
+.effect-description {
+  flex: 2;
+  font-size: 0.9em;
+  color: #666;
+  margin: 0 0.5rem;
 }</content>
 <parameter name="filePath">d:/D.E.L. Development/Clones/Deus-Ex-Ludus/styles/system-styles.css

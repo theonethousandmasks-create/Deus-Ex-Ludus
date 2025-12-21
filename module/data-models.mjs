@@ -16,7 +16,8 @@ class ActorDataModel extends foundry.abstract.TypeDataModel {
           value: new NumberField({ required: true, integer: true, min: 0, initial: 5 }),
           max: new NumberField({ required: true, integer: true, min: 0, initial: 10 })
         })
-      })
+      }),
+      notes: new StringField({ required: true, blank: true })
     };
   }
 }
@@ -80,4 +81,14 @@ export class ArmorDataModel extends ItemDataModel {
 
 export class RelicDataModel extends ItemDataModel {
   // For now, same as base item, just description
+}
+
+export class SettlementDataModel extends ActorDataModel {
+  static defineSchema() {
+    return {
+      ...super.defineSchema(),
+      population: new NumberField({ required: true, integer: true, min: 0, initial: 100 }),
+      resources: new NumberField({ required: true, integer: true, min: 0, initial: 50 })
+    };
+  }
 }

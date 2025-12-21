@@ -1,6 +1,6 @@
 import { SystemActor, SystemItem } from "./module/documents.mjs";
-import { CharacterDataModel, NpcDataModel, SkillDataModel, GearDataModel, ArmorDataModel, RelicDataModel } from "./module/data-models.mjs";
-import { CharacterSheet, NpcSheet, SkillSheet, GearSheet, ArmorSheet, RelicSheet } from "./module/sheets.mjs";
+import { CharacterDataModel, NpcDataModel, SettlementDataModel, SkillDataModel, GearDataModel, ArmorDataModel, RelicDataModel } from "./module/data-models.mjs";
+import { CharacterSheet, NpcSheet, SettlementSheet, SkillSheet, GearSheet, ArmorSheet, RelicSheet } from "./module/sheets.mjs";
 
 Hooks.once("init", () => {
   // Register Handlebars helpers
@@ -13,7 +13,8 @@ Hooks.once("init", () => {
   // Configure System Data Models.
   CONFIG.Actor.dataModels = {
     character: CharacterDataModel,
-    npc: NpcDataModel
+    npc: NpcDataModel,
+    settlement: SettlementDataModel
   };
   CONFIG.Item.dataModels = {
     skill: SkillDataModel,
@@ -31,6 +32,10 @@ Hooks.once("init", () => {
     npc: {
       bar: ["attributes.health", "attributes.faith"],
       value: []
+    },
+    settlement: {
+      bar: [],
+      value: ["population", "resources"]
     }
   };
 
@@ -41,6 +46,9 @@ Hooks.once("init", () => {
     },
     npc: {
       "Deus-Ex-Ludus.NpcSheet": NpcSheet
+    },
+    settlement: {
+      "Deus-Ex-Ludus.SettlementSheet": SettlementSheet
     }
   };
   CONFIG.Item.sheetClasses = {
