@@ -5,7 +5,7 @@ export class CharacterSheet extends ActorSheet {
       template: "templates/actor/character-sheet.html",
       width: 800,
       height: 800,
-      tabs: [{ navSelector: ".sheet-tabs", contentSelector: ".sheet-body", initial: "attributes" }]
+      tabs: [{ navSelector: ".sheet-tabs", contentSelector: ".sheet-body", initial: "attributes", group: "primary" }]
     });
   }
 
@@ -15,6 +15,7 @@ export class CharacterSheet extends ActorSheet {
     html.find('.item-edit').click(this._onItemEdit.bind(this));
     html.find('.item-delete').click(this._onItemDelete.bind(this));
     html.find('button[data-action]').click(this._onAttributeChange.bind(this));
+    html.find('.item-description').change(this._onItemDescriptionChange.bind(this));
   }
 
   _onRollSkill(event) {
@@ -43,6 +44,14 @@ export class CharacterSheet extends ActorSheet {
     const currentValue = this.actor.system.attributes[attribute].value;
     const newValue = action === 'increase' ? currentValue + 1 : Math.max(0, currentValue - 1);
     this.actor.update({ [`system.attributes.${attribute}.value`]: newValue });
+  }
+
+  _onItemDescriptionChange(event) {
+    event.preventDefault();
+    const itemId = event.currentTarget.closest('.item').dataset.itemId;
+    const newDescription = event.currentTarget.value;
+    const item = this.actor.items.get(itemId);
+    item.update({ 'system.description': newDescription });
   }
 }
 
