@@ -1,5 +1,3 @@
-import { ActorSheet, ItemSheet, mergeObject } from "foundry";
-
 export class CharacterSheet extends ActorSheet {
   static get defaultOptions() {
     return mergeObject(super.defaultOptions, {
