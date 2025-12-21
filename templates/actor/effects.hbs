@@ -1,9 +1,31 @@
-<ol class="effects-list">
-  {{#each actor.effects as |effect id|}}
-  <li class="effect flexrow">
-    <img class="effect-img" src="{{effect.img}}"/>
-    <h4 class="effect-name">{{effect.name}}</h4>
-    <div class="effect-description">{{effect.description}}</div>
-  </li>
-  {{/each}}
-</ol>
+{{! Effects Tab }}
+<section class="tab scrollable" data-group="primary" data-tab="effects">
+  <ul class="effects-list">
+    {{#each effects as |category|}}
+      <li class="effects-category">
+        <h3 class="category-label">{{category.label}}</h3>
+        <ul class="effects">
+          {{#each category.effects as |effect|}}
+            <li class="effect flexrow" data-effect-id="{{effect._id}}">
+              <img class="effect-icon" src="{{effect.icon}}" alt="{{effect.label}}">
+              <div class="effect-name">{{effect.label}}</div>
+              <div class="effect-controls">
+                {{#if effect.isTemporary}}
+                  <i class="fas fa-clock" title="{{localize 'EFFECT.Duration'}} {{effect.duration.label}}"></i>
+                {{/if}}
+                {{#if @root.editable}}
+                  <a class="effect-control" data-action="editEffect" data-id="{{effect._id}}" title="{{localize 'DOCUMENT.Update'}}">
+                    <i class="fas fa-edit"></i>
+                  </a>
+                  <a class="effect-control" data-action="deleteEffect" data-id="{{effect._id}}" title="{{localize 'DOCUMENT.Delete'}}">
+                    <i class="fas fa-trash"></i>
+                  </a>
+                {{/if}}
+              </div>
+            </li>
+          {{/each}}
+        </ul>
+      </li>
+    {{/each}}
+  </ul>
+</section>

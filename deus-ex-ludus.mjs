@@ -209,7 +209,8 @@ class CharacterSheet extends api.HandlebarsApplicationMixin(sheets.ActorSheet) {
       viewDoc: CharacterSheet.#viewDoc,
       createDoc: CharacterSheet.#createDoc,
       deleteDoc: CharacterSheet.#deleteDoc,
-      toggleEffect: CharacterSheet.#toggleEffect
+      editEffect: CharacterSheet.#editEffect,
+      deleteEffect: CharacterSheet.#deleteEffect
     },
     form: {
       submitOnChange: true
@@ -329,6 +330,26 @@ class CharacterSheet extends api.HandlebarsApplicationMixin(sheets.ActorSheet) {
     return itemTypes;
   }
 
+  /** @inheritdoc */
+  async _preparePartContext(partId, context) {
+    switch (partId) {
+      case "tabs":
+        context.group = "primary";
+        context.tabs = this.constructor.TABS.primary.tabs;
+        context.labelPrefix = this.constructor.TABS.primary.labelPrefix;
+        break;
+      case "effects":
+        context.effects = prepareActiveEffectCategories(this.actor.allApplicableEffects());
+        context.tab = context.tabs[partId];
+        break;
+      case "items":
+        context.itemTypes = this._prepareItemTypes();
+        context.tab = context.tabs[partId];
+        break;
+    }
+    return context;
+  }
+
   static #rollSkill(event, app) {
     const skill = event.target.dataset.skill;
     app.document.rollSkill(skill);
@@ -358,30 +379,15 @@ class CharacterSheet extends api.HandlebarsApplicationMixin(sheets.ActorSheet) {
     app.document.deleteEmbeddedDocuments("Item", [itemId]);
   }
 
-  static #toggleEffect(event, app) {
+  static #editEffect(event, app) {
     const effectId = event.target.closest('[data-effect-id]').dataset.effectId;
     const effect = app.document.effects.get(effectId);
-    effect.update({ disabled: !effect.disabled });
+    effect.sheet.render(true);
   }
 
-  static #viewDoc(event, app) {
-    const doc = app.document.items.get(event.target.closest('.item').dataset.itemId);
-    doc.sheet.render(true);
-  }
-
-  static #createDoc(event, app) {
-    const type = event.target.dataset.type;
-    const itemData = { name: `New ${type}`, type: type };
-    app.document.createEmbeddedDocuments("Item", [itemData]);
-  }
-
-  static #deleteDoc(event, app) {
-    const itemId = event.target.closest('.item').dataset.itemId;
-    app.document.deleteEmbeddedDocuments("Item", [itemId]);
-  }
-
-  static #toggleEffect(event, app) {
-    // Placeholder for effect toggling
+  static #deleteEffect(event, app) {
+    const effectId = event.target.closest('[data-effect-id]').dataset.effectId;
+    app.document.deleteEmbeddedDocuments("ActiveEffect", [effectId]);
   }
 }
 
@@ -440,6 +446,18 @@ class ItemSheet extends api.HandlebarsApplicationMixin(sheets.ItemSheet) {
     });
     return context;
   }
+
+  /** @inheritdoc */
+  async _preparePartContext(partId, context) {
+    switch (partId) {
+      case "tabs":
+        context.group = "primary";
+        context.tabs = this.constructor.TABS.primary.tabs;
+        context.labelPrefix = this.constructor.TABS.primary.labelPrefix;
+        break;
+    }
+    return context;
+  }
 }
 
 /* -------------------------------------------- */
@@ -469,6 +487,12 @@ Hooks.once("init", () => {
   Object.assign(CONFIG.Item.dataModels, configItems);
 
   CONFIG.Actor.defaultType = "character";
+
+  CONFIG.Actor.typeLabels = {
+    character: "Character",
+    npc: "NPC",
+    settlement: "Settlement"
+  };
 
   CONFIG.Item.typeLabels = {
     skill: "Skill",
