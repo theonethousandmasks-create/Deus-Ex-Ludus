@@ -1,12 +1,67 @@
-export class CharacterSheet extends ActorSheet {
-  static get defaultOptions() {
-    return mergeObject(super.defaultOptions, {
-      classes: ["Deus-Ex-Ludus", "sheet", "actor"],
-      template: "templates/actor/character-sheet.html",
+const { api, sheets } = foundry.applications;
+
+export class CharacterSheet extends api.HandlebarsApplicationMixin(sheets.ActorSheet) {
+  static DEFAULT_OPTIONS = {
+    classes: ["Deus-Ex-Ludus", "sheet", "actor"],
+    position: {
       width: 800,
-      height: 800,
-      tabs: [{ navSelector: ".tab-buttons", contentSelector: ".sheet-body", initial: "attributes", group: "primary" }]
-    });
+      height: 800
+    },
+    actions: {
+      editItem: this._onItemEdit,
+      deleteItem: this._onItemDelete,
+      rollSkill: this._onRollSkill,
+      attributeChange: this._onAttributeChange
+    },
+    form: {
+      submitOnChange: true
+    }
+  };
+
+  static TABS = {
+    primary: {
+      tabs: [
+        { id: "attributes" },
+        { id: "items" },
+        { id: "notes" },
+        { id: "effects" }
+      ],
+      initial: "attributes",
+      labelPrefix: "DeusExLudus.Sheets.Tabs"
+    }
+  };
+
+  static PARTS = {
+    header: {
+      template: "templates/actor/header.hbs"
+    },
+    tabs: {
+      template: "templates/generic/tab-navigation.hbs"
+    },
+    attributes: {
+      template: "templates/actor/attributes.hbs",
+      scrollable: [""]
+    },
+    items: {
+      template: "templates/actor/items.hbs",
+      scrollable: [""]
+    },
+    notes: {
+      template: "templates/actor/notes.hbs",
+      scrollable: [""]
+    },
+    effects: {
+      template: "templates/actor/effects.hbs",
+      scrollable: [""]
+    }
+  };
+
+  activateListeners(html) {
+    super.activateListeners(html);
+    html.find('button[data-action="attributeChange"]').click(this._onAttributeChange.bind(this));
+    html.find('.item-edit').click(this._onItemEdit.bind(this));
+    html.find('.item-delete').click(this._onItemDelete.bind(this));
+    html.find('.item-description').change(this._onItemDescriptionChange.bind(this));
   }
 
   activateListeners(html) {
@@ -39,10 +94,10 @@ export class CharacterSheet extends ActorSheet {
 
   _onAttributeChange(event) {
     event.preventDefault();
-    const action = event.currentTarget.dataset.action;
     const attribute = event.currentTarget.dataset.attribute;
+    const direction = event.currentTarget.dataset.direction;
     const currentValue = this.actor.system.attributes[attribute].value;
-    const newValue = action === 'increase' ? currentValue + 1 : Math.max(0, currentValue - 1);
+    const newValue = direction === 'increase' ? currentValue + 1 : Math.max(0, currentValue - 1);
     this.actor.update({ [`system.attributes.${attribute}.value`]: newValue });
   }
 

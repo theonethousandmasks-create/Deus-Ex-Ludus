@@ -1,0 +1,9 @@
+<ol class="effects-list">
+  {{#each actor.effects as |effect id|}}
+  <li class="effect flexrow">
+    <img class="effect-img" src="{{effect.img}}"/>
+    <h4 class="effect-name">{{effect.name}}</h4>
+    <div class="effect-description">{{effect.description}}</div>
+  </li>
+  {{/each}}
+</ol>

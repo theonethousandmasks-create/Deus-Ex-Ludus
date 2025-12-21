@@ -4,5 +4,15 @@
   "SUCCESS": "Success",
   "FAILURE": "Failure",
   "HP": "Health Points",
-  "FP": "Faith Points"
+  "FP": "Faith Points",
+  "DeusExLudus": {
+    "Sheets": {
+      "Tabs": {
+        "attributes": "Attributes",
+        "items": "Items",
+        "notes": "Notes",
+        "effects": "Effects"
+      }
+    }
+  }
 }

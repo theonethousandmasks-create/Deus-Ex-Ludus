@@ -1,0 +1,22 @@
+<div class="attributes-section">
+  <div class="attribute health">
+    <label>HP</label>
+    <div class="flexrow">
+      <button type="button" data-action="attributeChange" data-attribute="health" data-direction="decrease">-</button>
+      <input type="number" name="system.attributes.health.value" value="{{system.attributes.health.value}}" min="0" max="{{system.attributes.health.max}}"/>
+      <span>/</span>
+      <input type="number" name="system.attributes.health.max" value="{{system.attributes.health.max}}" min="0"/>
+      <button type="button" data-action="attributeChange" data-attribute="health" data-direction="increase">+</button>
+    </div>
+  </div>
+  <div class="attribute faith">
+    <label>FP</label>
+    <div class="flexrow">
+      <button type="button" data-action="attributeChange" data-attribute="faith" data-direction="decrease">-</button>
+      <input type="number" name="system.attributes.faith.value" value="{{system.attributes.faith.value}}" min="0" max="{{system.attributes.faith.max}}"/>
+      <span>/</span>
+      <input type="number" name="system.attributes.faith.max" value="{{system.attributes.faith.max}}" min="0"/>
+      <button type="button" data-action="attributeChange" data-attribute="faith" data-direction="increase">+</button>
+    </div>
+  </div>
+</div>
