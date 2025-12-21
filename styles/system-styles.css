@@ -33,7 +33,12 @@
 }
 
 .tab {
+  display: none;
   padding: 1rem 0;
+}
+
+.tab.active {
+  display: block;
 }
 
 .form-group {

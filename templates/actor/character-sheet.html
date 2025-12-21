@@ -5,15 +5,14 @@
       <h1 class="charname"><input name="name" type="text" value="{{actor.name}}" placeholder="Name"/></h1>
     </div>
   </header>
-  <div class="tab-buttons">
-    <button class="tab-button {{#if (eq currentTab 'attributes')}}active{{/if}}" data-tab="attributes">Attributes</button>
-    <button class="tab-button {{#if (eq currentTab 'items')}}active{{/if}}" data-tab="items">Items</button>
-    <button class="tab-button {{#if (eq currentTab 'notes')}}active{{/if}}" data-tab="notes">Notes</button>
-    <button class="tab-button {{#if (eq currentTab 'effects')}}active{{/if}}" data-tab="effects">Effects</button>
-  </div>
+  <nav class="tab-buttons" data-group="primary">
+    <a class="tab-button" data-tab="attributes">Attributes</a>
+    <a class="tab-button" data-tab="items">Items</a>
+    <a class="tab-button" data-tab="notes">Notes</a>
+    <a class="tab-button" data-tab="effects">Effects</a>
+  </nav>
   <section class="sheet-body">
-    {{#if (eq currentTab 'attributes')}}
-    <div class="tab attributes">
+    <div class="tab attributes" data-group="primary" data-tab="attributes">
       <div class="attributes-section">
         <div class="attribute health">
           <label>HP</label>
@@ -37,9 +36,7 @@
         </div>
       </div>
     </div>
-    {{/if}}
-    {{#if (eq currentTab 'items')}}
-    <div class="tab items">
+    <div class="tab items" data-group="primary" data-tab="items">
       <ol class="items-list">
         {{#each actor.items as |item id|}}
         <li class="item flexrow" data-item-id="{{item._id}}">
@@ -56,17 +53,13 @@
         {{/each}}
       </ol>
     </div>
-    {{/if}}
-    {{#if (eq currentTab 'notes')}}
-    <div class="tab notes">
+    <div class="tab notes" data-group="primary" data-tab="notes">
       <div class="form-group">
         <label>Notes</label>
         <textarea name="system.notes">{{system.notes}}</textarea>
       </div>
     </div>
-    {{/if}}
-    {{#if (eq currentTab 'effects')}}
-    <div class="tab effects">
+    <div class="tab effects" data-group="primary" data-tab="effects">
       <ol class="effects-list">
         {{#each actor.effects as |effect id|}}
         <li class="effect flexrow">
@@ -77,6 +70,5 @@
         {{/each}}
       </ol>
     </div>
-    {{/if}}
   </section>
 </form>
