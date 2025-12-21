@@ -1,0 +1,74 @@
+{
+    "id": "deus-ex-ludus",
+    "title": "Deus Ex Ludus",
+    "description": "A d100 target number system for FoundryVTT, by FoxMaid Games. Currently in beta.",
+    "authors": [
+        {
+            "name": "FoxMaid Games"
+        }
+    ],
+    "url": "",
+    "license": "LICENSE.txt",
+    "readme": "README.md",
+    "bugs": "",
+    "changelog": "CHANGELOG.md",
+    "media": [
+        {
+            "type": "setup",
+            "url": "",
+            "thumbnail": ""
+        }
+    ],
+    "version": "0.1.0-beta",
+    "compatibility": {
+        "minimum": "13.351",
+        "verified": "13"
+    },
+    "esmodules": [
+        "del.mjs"
+    ],
+    "styles": [
+        "del.css"
+    ],
+    "languages": [
+        {
+            "lang": "en",
+            "name": "English",
+            "path": "lang/en.json"
+        }
+    ],
+    "packs": [],
+    "packFolders": [],
+    "manifest": "",
+    "download": "",
+    "background": "",
+    "initiative": "1d100",
+    "grid": {
+        "type": 1,
+        "distance": 5,
+        "units": "ft",
+        "diagonals": 0
+    },
+    "primaryTokenAttribute": "attributes.hp",
+    "secondaryTokenAttribute": "",
+    "documentTypes": {
+        "Actor": {
+            "character": {},
+            "npc": {}
+        },
+        "Item": {
+            "skill": {},
+            "attribute": {},
+            "gear": {}
+        },
+        "Card": {},
+        "Cards": {},
+        "Combat": {},
+        "Combatant": {
+            "player": {}
+        }
+    },
+    "flags": {
+        "hotReload": false
+    }
+}

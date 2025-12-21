@@ -1,0 +1,37 @@
+<div class="tab properties" data-tab="properties">
+  {{#if (eq document.type "skill")}}
+  <div>
+    <label>Attribute</label>
+    <select name="system.attribute">
+      {{#select system.attribute}}
+      <option value="str">Strength</option>
+      <option value="dex">Dexterity</option>
+      <option value="con">Constitution</option>
+      <option value="int">Intelligence</option>
+      <option value="wis">Wisdom</option>
+      <option value="cha">Charisma</option>
+      {{/select}}
+    </select>
+  </div>
+  <div>
+    <label>Bonus</label>
+    {{formInput fields.bonus value=system.bonus}}
+  </div>
+  {{/if}}
+  {{#if (eq document.type "attribute")}}
+  <div>
+    <label>Value</label>
+    {{formInput fields.value value=system.value}}
+  </div>
+  {{/if}}
+  {{#if (eq document.type "gear")}}
+  <div>
+    <label>Description</label>
+    {{formTextarea fields.description value=system.description}}
+  </div>
+  <div>
+    <label>Weight</label>
+    {{formInput fields.weight value=system.weight}}
+  </div>
+  {{/if}}
+</div>

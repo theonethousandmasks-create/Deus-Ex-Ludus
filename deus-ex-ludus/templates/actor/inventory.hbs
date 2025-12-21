@@ -1,0 +1,21 @@
+<div class="tab inventory" data-tab="inventory">
+  <h3>Inventory</h3>
+  <ul>
+    {{#each items as |item|}}
+    {{#if (eq item.type "gear")}}
+    <li class="item flexrow">
+      <img src="{{item.img}}" width="30" height="30">
+      <span>{{item.name}}</span>
+      <span>{{item.system.description}}</span>
+      <span>{{item.system.weight}} lbs</span>
+      <div class="document-controls">
+        {{#if editable}}
+        <button type="button" data-action="edit" data-document-class="Item" data-document-id="{{item.id}}"><i class="fa-solid fa-edit"></i></button>
+        <button type="button" data-action="delete" data-document-class="Item" data-document-id="{{item.id}}"><i class="fa-solid fa-trash"></i></button>
+        {{/if}}
+      </div>
+    </li>
+    {{/if}}
+    {{/each}}
+  </ul>
+</div>

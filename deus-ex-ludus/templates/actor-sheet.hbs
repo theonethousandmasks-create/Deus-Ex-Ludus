@@ -1,0 +1,89 @@
+<form class="{{cssClass}} flexcol" autocomplete="off">
+  {{! Sheet Header }}
+  <header class="sheet-header flexrow">
+    <img
+      class="profile-img"
+      src="{{document.img}}"
+      {{#if editable}}
+      data-action="editImage"
+      data-edit="img"
+      {{/if}}
+      data-tooltip="{{document.name}}"
+      height="100" width="100"
+      alt="{{document.name}}"
+    >
+    <div class="header-fields">
+      {{formInput fields.name value=document.name}}
+    </div>
+  </header>
+
+  {{! Sheet Navigation }}
+  <nav class="sheet-tabs tabs" data-group="primary">
+    <button type="button" data-tab="attributes">{{localize "DEL.Tabs.attributes"}}</button>
+    <button type="button" data-tab="skills">{{localize "DEL.Tabs.skills"}}</button>
+    <button type="button" data-tab="inventory">{{localize "DEL.Tabs.inventory"}}</button>
+    <button type="button" data-tab="effects">{{localize "DEL.Tabs.effects"}}</button>
+  </nav>
+
+  {{! Sheet Body }}
+  <section class="sheet-body">
+    {{! Attributes Tab }}
+    <div class="tab attributes" data-tab="attributes">
+      <h3>Attributes</h3>
+      {{#each system.attributes as |attr key|}}
+      <div class="attribute flexrow">
+        <label>{{localize (concat "DEL.Attributes." key)}}</label>
+        {{formInput (lookup fields.attributes key ".value") value=attr.value}}
+      </div>
+      {{/each}}
+      <div class="attribute flexrow">
+        <label>HP</label>
+        {{formInput fields.hp.value value=system.hp.value}} / {{formInput fields.hp.max value=system.hp.max}}
+      </div>
+    </div>
+
+    {{! Skills Tab }}
+    <div class="tab skills" data-tab="skills">
+      <h3>Skills</h3>
+      <ul>
+        {{#each items as |item|}}
+        {{#if (eq item.type "skill")}}
+        <li class="skill flexrow">
+          <span>{{item.name}}</span>
+          <span>({{localize (concat "DEL.Attributes." item.system.attribute)}} +{{item.system.bonus}})</span>
+          <button class="roll-skill" data-skill-id="{{item.id}}">Roll</button>
+        </li>
+        {{/if}}
+        {{/each}}
+      </ul>
+    </div>
+
+    {{! Inventory Tab }}
+    <div class="tab inventory" data-tab="inventory">
+      <h3>Inventory</h3>
+      <ul>
+        {{#each items as |item|}}
+        {{#if (eq item.type "gear")}}
+        <li class="item flexrow">
+          <img src="{{item.img}}" width="30" height="30">
+          <span>{{item.name}}</span>
+          <span>{{item.system.description}}</span>
+          <span>{{item.system.weight}} lbs</span>
+          <div class="document-controls">
+            {{#if editable}}
+            <button type="button" data-action="edit" data-document-class="Item" data-document-id="{{item.id}}"><i class="fa-solid fa-edit"></i></button>
+            <button type="button" data-action="delete" data-document-class="Item" data-document-id="{{item.id}}"><i class="fa-solid fa-trash"></i></button>
+            {{/if}}
+          </div>
+        </li>
+        {{/if}}
+        {{/each}}
+      </ul>
+    </div>
+
+    {{! Effects Tab }}
+    <div class="tab effects" data-tab="effects">
+      {{> "systems/deus-ex-ludus/templates/shared/effects.hbs"}}
+    </div>
+  </section>
+</form>

@@ -1,0 +1,23 @@
+{
+  "DEL": {
+    "Sheets": {
+      "ActorSheet": "Deus Ex Ludus Actor Sheet",
+      "ItemSheet": "Deus Ex Ludus Item Sheet"
+    },
+    "Attributes": {
+      "str": "Strength",
+      "dex": "Dexterity",
+      "con": "Constitution",
+      "int": "Intelligence",
+      "wis": "Wisdom",
+      "cha": "Charisma"
+    },
+    "Tabs": {
+      "attributes": "Attributes",
+      "skills": "Skills",
+      "inventory": "Inventory",
+      "effects": "Effects",
+      "properties": "Properties"
+    }
+  }
+}

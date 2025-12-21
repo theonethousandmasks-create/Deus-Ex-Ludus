@@ -1,0 +1,72 @@
+<form class="{{cssClass}} flexcol" autocomplete="off">
+  {{! Sheet Header }}
+  <header class="sheet-header flexrow">
+    <img
+      class="profile-img"
+      src="{{document.img}}"
+      {{#if editable}}
+      data-action="editImage"
+      data-edit="img"
+      {{/if}}
+      data-tooltip="{{document.name}}"
+      height="60" width="60"
+      alt="{{document.name}}"
+    >
+    <div class="header-fields">
+      {{formInput fields.name value=document.name}}
+    </div>
+  </header>
+
+  {{! Sheet Navigation }}
+  <nav class="sheet-tabs tabs" data-group="primary">
+    <button type="button" data-tab="properties">{{localize "DEL.Tabs.properties"}}</button>
+    <button type="button" data-tab="effects">{{localize "DEL.Tabs.effects"}}</button>
+  </nav>
+
+  {{! Sheet Body }}
+  <section class="sheet-body">
+    {{! Properties Tab }}
+    <div class="tab properties" data-tab="properties">
+      {{#if (eq document.type "skill")}}
+      <div class="form-group">
+        <label>Attribute</label>
+        <select name="system.attribute">
+          {{#select system.attribute}}
+          <option value="str">Strength</option>
+          <option value="dex">Dexterity</option>
+          <option value="con">Constitution</option>
+          <option value="int">Intelligence</option>
+          <option value="wis">Wisdom</option>
+          <option value="cha">Charisma</option>
+          {{/select}}
+        </select>
+      </div>
+      <div class="form-group">
+        <label>Bonus</label>
+        {{formInput fields.bonus value=system.bonus}}
+      </div>
+      {{/if}}
+      {{#if (eq document.type "attribute")}}
+      <div class="form-group">
+        <label>Value</label>
+        {{formInput fields.value value=system.value}}
+      </div>
+      {{/if}}
+      {{#if (eq document.type "gear")}}
+      <div class="form-group">
+        <label>Description</label>
+        {{formTextarea fields.description value=system.description}}
+      </div>
+      <div class="form-group">
+        <label>Weight</label>
+        {{formInput fields.weight value=system.weight}}
+      </div>
+      {{/if}}
+    </div>
+
+    {{! Effects Tab }}
+    <div class="tab effects" data-tab="effects">
+      {{> "systems/deus-ex-ludus/templates/shared/effects.hbs"}}
+    </div>
+  </section>
+</form>

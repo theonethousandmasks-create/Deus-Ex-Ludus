@@ -1,0 +1,14 @@
+<header class="sheet-header flexrow">
+  <img
+    class="profile-img"
+    src="{{document.img}}"
+    {{#if editable}}
+    data-action="editImage"
+    data-edit="img"
+    {{/if}}
+    data-tooltip="{{document.name}}"
+    height="60" width="60"
+    alt="{{document.name}}"
+  >
+  {{formInput fields.name value=document.name}}
+</header>

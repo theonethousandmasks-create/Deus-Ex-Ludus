@@ -1,0 +1,14 @@
+<div class="tab skills" data-tab="skills">
+  <h3>Skills</h3>
+  <ul>
+    {{#each items as |item|}}
+    {{#if (eq item.type "skill")}}
+    <li class="skill">
+      <span>{{item.name}}</span>
+      <span>({{localize (concat "DEL.Attributes." item.system.attribute)}} +{{item.system.bonus}})</span>
+      <button class="roll-skill" data-skill-id="{{item.id}}">Roll</button>
+    </li>
+    {{/if}}
+    {{/each}}
+  </ul>
+</div>

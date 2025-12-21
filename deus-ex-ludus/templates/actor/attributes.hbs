@@ -1,0 +1,13 @@
+<div class="tab attributes" data-tab="attributes">
+  <h3>Attributes</h3>
+  {{#each system.attributes as |attr key|}}
+  <div class="attribute">
+    <label>{{localize (concat "DEL.Attributes." key)}}</label>
+    {{formInput (lookup fields.attributes key ".value") value=attr.value}}
+  </div>
+  {{/each}}
+  <div class="attribute">
+    <label>HP</label>
+    {{formInput fields.hp.value value=system.hp.value}} / {{formInput fields.hp.max value=system.hp.max}}
+  </div>
+</div>
