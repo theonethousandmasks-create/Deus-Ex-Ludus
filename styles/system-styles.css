@@ -2,6 +2,64 @@
 
 .sheet-header {
   background: #f0f0f0;
+  padding: 1rem;
+  margin-bottom: 1rem;
+}
+
+.sheet-tabs {
+  border-bottom: 1px solid #ccc;
+  margin-bottom: 1rem;
+}
+
+.sheet-tabs .item {
+  display: inline-block;
+  padding: 0.5rem 1rem;
+  background: #eee;
+  border: 1px solid #ccc;
+  border-bottom: none;
+  margin-right: 0.25rem;
+  cursor: pointer;
+}
+
+.sheet-tabs .item.active {
+  background: #fff;
+  border-bottom: 1px solid #fff;
+}
+
+.sheet-body .tab {
+  display: none;
+}
+
+.sheet-body .tab.active {
+  display: block;
+}
+
+form input, form textarea, form select {
+  width: 100%;
+  padding: 0.5rem;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+}
+
+form input[type="number"] {
+  width: auto;
+}
+
+.flexrow {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+button {
+  padding: 0.25rem 0.5rem;
+  border: 1px solid #ccc;
+  background: #fff;
+  cursor: pointer;
+}
+
+button:hover {
+  background: #eee;
 }
 
 .attributes-section {
