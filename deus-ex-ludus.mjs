@@ -1,6 +1,6 @@
 import { SystemActor, SystemItem } from "./module/documents.mjs";
-import { CharacterDataModel, NpcDataModel, SettlementDataModel, SkillDataModel, GearDataModel, ArmorDataModel, RelicDataModel } from "./module/data-models.mjs";
-import { CharacterSheet, NpcSheet, SettlementSheet, SkillSheet, GearSheet, ArmorSheet, RelicSheet } from "./module/sheets.mjs";
+import { CharacterDataModel, NpcDataModel, SettlementDataModel, SkillDataModel, WeaponDataModel, ArmorDataModel, RelicDataModel } from "./module/data-models.mjs";
+import { CharacterSheet, NpcSheet, SettlementSheet, SkillSheet, WeaponSheet, ArmorSheet, RelicSheet } from "./module/sheets.mjs";
 
 Hooks.once("init", () => {
   // Register Handlebars helpers
@@ -18,7 +18,7 @@ Hooks.once("init", () => {
   };
   CONFIG.Item.dataModels = {
     skill: SkillDataModel,
-    gear: GearDataModel,
+    weapon: WeaponDataModel,
     armor: ArmorDataModel,
     relic: RelicDataModel
   };
@@ -55,14 +55,25 @@ Hooks.once("init", () => {
     skill: {
       "Deus-Ex-Ludus.SkillSheet": SkillSheet
     },
-    gear: {
-      "Deus-Ex-Ludus.GearSheet": GearSheet
+    weapon: {
+      "Deus-Ex-Ludus.WeaponSheet": WeaponSheet
     },
     armor: {
       "Deus-Ex-Ludus.ArmorSheet": ArmorSheet
     },
     relic: {
       "Deus-Ex-Ludus.RelicSheet": RelicSheet
+    }
+  };
+  CONFIG.Item.sheetClasses = {
+    skill: {
+      "Deus-Ex-Ludus.SkillSheet": SkillSheet
+    },
+    weapon: {
+      "Deus-Ex-Ludus.WeaponSheet": WeaponSheet
+    },
+    armor: {
+      "Deus-Ex-Ludus.ArmorSheet": ArmorSheet
     }
   };
 });

@@ -61,7 +61,7 @@ export class SkillDataModel extends ItemDataModel {
   }
 }
 
-export class GearDataModel extends ItemDataModel {
+export class WeaponDataModel extends ItemDataModel {
   static defineSchema() {
     return {
       ...super.defineSchema(),

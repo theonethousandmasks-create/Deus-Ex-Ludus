@@ -6,7 +6,8 @@ export class CharacterSheet extends ActorSheet {
       classes: ["Deus-Ex-Ludus", "sheet", "actor"],
       template: "templates/actor/character-sheet.html",
       width: 800,
-      height: 800
+      height: 800,
+      tabs: [{ navSelector: ".sheet-tabs", contentSelector: ".sheet-body", initial: "attributes" }]
     });
   }
 

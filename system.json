@@ -25,9 +25,8 @@
     },
     "Item": {
       "skill": {},
-      "gear": {},
-      "armor": {},
-      "relic": {}
+      "weapon": {},
+      "armor": {}
     }
   },
   "initiative": "1d100",
@@ -36,7 +35,7 @@
     "units": "m"
   },
   "primaryTokenAttribute": "attributes.health",
-  "secondaryTokenAttribute": "attributes.faith",
+  "secondaryTokenAttribute": null,
   "url": "https://github.com/FoxMaidGames/Deus-Ex-Ludus",
   "manifest": "https://github.com/FoxMaidGames/Deus-Ex-Ludus/releases/download/v0.1.0/system.json",
   "download": "https://github.com/FoxMaidGames/Deus-Ex-Ludus/releases/download/v0.1.0/Deus-Ex-Ludus.zip"
