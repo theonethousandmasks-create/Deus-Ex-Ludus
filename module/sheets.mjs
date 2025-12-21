@@ -58,7 +58,7 @@ export class SkillSheet extends ItemSheet {
       classes: ["Deus-Ex-Ludus", "sheet", "item"],
       template: "templates/item/skill-sheet.html",
       width: 400,
-      height: 400
+      height: 600
     });
   }
 }
@@ -69,7 +69,7 @@ export class GearSheet extends ItemSheet {
       classes: ["Deus-Ex-Ludus", "sheet", "item"],
       template: "templates/item/gear-sheet.html",
       width: 400,
-      height: 400
+      height: 600
     });
   }
 }
@@ -80,7 +80,7 @@ export class ArmorSheet extends ItemSheet {
       classes: ["Deus-Ex-Ludus", "sheet", "item"],
       template: "templates/item/armor-sheet.html",
       width: 400,
-      height: 400
+      height: 600
     });
   }
 }
@@ -91,7 +91,7 @@ export class RelicSheet extends ItemSheet {
       classes: ["Deus-Ex-Ludus", "sheet", "item"],
       template: "templates/item/relic-sheet.html",
       width: 400,
-      height: 400
+      height: 600
     });
   }
 }
