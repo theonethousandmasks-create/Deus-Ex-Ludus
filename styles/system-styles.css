@@ -1,60 +1,88 @@
-/* Basic styles for Deus Ex Ludus */
+.application.sheet.Deus-Ex-Ludus {
+  max-height: 90%;
 
-.sheet-header {
-  background: #f0f0f0;
-  padding: 0.5rem;
-}
+  &.actor, &.item {
+    .window-content {
+      padding-top: 0;
+    }
+  }
 
-.sheet-body {
-  padding: 0.5rem;
-}
-
-.tab-buttons {
-  display: flex;
-  margin-bottom: 1rem;
-  border-bottom: 1px solid #ccc;
-}
-
-.tab-button {
-  padding: 0.5rem 1rem;
-  background: #eee;
-  border: 1px solid #ccc;
-  border-bottom: none;
-  cursor: pointer;
-  margin-right: 0.25rem;
-  position: relative;
-  top: 1px;
-}
-
-.tab-button.active {
-  background: #fff;
-  border-bottom: 1px solid #fff;
-  font-weight: bold;
-}
-
-.tab {
-  display: none;
-  padding: 1rem 0;
-}
-
-.tab.active {
-  display: block;
-}
-
-.form-group {
-  margin-bottom: 1rem;
-}
-
-.form-group label {
-  display: block;
-  font-weight: bold;
-  margin-bottom: 0.5rem;
-}
-
-.form-group textarea {
-  width: 100%;
-  min-height: 100px;
-  resize: vertical;
+  .sheet-header {
+    img {
+      border: none;
+      flex: 0 0 100px;
+      object-fit: contain;
+    }
+    input[name="name"] {
+      height: 2.5em;
+      font-size: 2rem;
+    }
+  }
+  .tab {
+    height: 100%;
+    padding-top: 10px;
+  }
+  .tab[data-tab="items"] {
+    ul {
+      list-style: none;
+      padding-left: 5px;
+    }
+    .itemHeader {
+      border-bottom: 1px solid var(--color-border-light-primary);
+      .type-label {
+        font-size: 20px;
+      }
+      .document-controls {
+        flex: 0 0 100px;
+      }
+    }
+    .item {
+      img {
+        border: none;
+        flex: 0 0 30px;
+        padding-right: 5px;
+      }
+      .document-controls {
+        flex: 0 0 50px;
+      }
+    }
+  }
+  .tab[data-tab="effects"] {
+    ul {
+      list-style: none;
+      padding-left: 5px;
+      margin-top: 0;
+      margin-bottom: 0;
+    }
+    .effects-header {
+      font-size: 16px;
+      border-bottom: 1px solid var(--color-border-light-primary);
+      .document-controls {
+        flex: 0 0 100px;
+      }
+    }
+    .effect {
+      .effect-label {
+        img {
+          border: none;
+          flex: 0 0 30px;
+          padding-right: 5px;
+        }
+        .effect-name {
+          line-height: 24px;
+        }
+      }
+      .effect-duration {
+        flex: 0 0 130px;
+      }
+      .document-controls {
+        flex: 0 0 80px;
+      }
+    }
+    .effect-label {
+      flex: 2;
+    }
+  }
 }
 
 .attributes-section {
@@ -78,6 +106,21 @@
   display: flex;
   align-items: center;
   gap: 0.5rem;
+}
+
+.skills-section {
+  margin-top: 1rem;
+}
+
+.skill {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.skill label {
+  min-width: 100px;
 }
 
 .items-list {
@@ -120,34 +163,19 @@
   margin-left: 0.5rem;
 }
 
-.effects-list {
-  list-style: none;
-  padding: 0;
+.form-group {
+  margin-bottom: 1rem;
 }
 
-.effect {
-  padding: 0.5rem;
-  border: 1px solid #ccc;
+.form-group label {
+  display: block;
+  font-weight: bold;
   margin-bottom: 0.5rem;
-  display: flex;
-  align-items: center;
 }
 
-.effect-img {
-  width: 32px;
-  height: 32px;
-  margin-right: 0.5rem;
-}
-
-.effect-name {
-  margin: 0;
-  flex: 1;
-}
-
-.effect-description {
-  flex: 2;
-  font-size: 0.9em;
-  color: #666;
-  margin: 0 0.5rem;
+.form-group textarea {
+  width: 100%;
+  min-height: 100px;
+  resize: vertical;
 }</content>
 <parameter name="filePath">d:/D.E.L. Development/Clones/Deus-Ex-Ludus/styles/system-styles.css
