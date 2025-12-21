@@ -35,7 +35,9 @@
   },
   "primaryTokenAttribute": "attributes.health",
   "secondaryTokenAttribute": null,
-  "manifest": "https://github.com/yourusername/deus-ex-ludus/releases/download/v0.1.0/system.json",
-  "download": "https://github.com/yourusername/deus-ex-ludus/releases/download/v0.1.0/deus-ex-ludus.zip"
+  "url": "https://github.com/FoxMaidGames/Deus-Ex-Ludus",
+  "manifest": "https://github.com/FoxMaidGames/Deus-Ex-Ludus/releases/download/v0.1.0/system.json",
+  "download": "https://github.com/FoxMaidGames/Deus-Ex-Ludus/releases/download/v0.1.0/Deus-Ex-Ludus.zip"
+}
 }</content>
 <parameter name="filePath">d:/D.E.L. Development/Clones/Deus-Ex-Ludus/system.json
