@@ -258,6 +258,42 @@ class CharacterSheet extends api.HandlebarsApplicationMixin(sheets.ActorSheet) {
   _initializeApplicationOptions(options) {
     const initialized = super._initializeApplicationOptions(options);
     initialized.classes.push(initialized.document.type);
+
+    // Set PARTS and TABS based on actor type
+    if (initialized.document.type === 'settlement') {
+      initialized.parts = {
+        header: {
+          template: "templates/actor/header.hbs"
+        },
+        tabs: {
+          template: "templates/generic/tab-navigation.hbs"
+        },
+        attributes: {
+          template: "templates/actor/settlement-attributes.hbs",
+          scrollable: [""]
+        },
+        notes: {
+          template: "templates/actor/notes.hbs",
+          scrollable: [""]
+        },
+        effects: {
+          template: "templates/shared/effects.hbs",
+          scrollable: [""]
+        }
+      };
+      initialized.tabs = {
+        primary: {
+          tabs: [
+            { id: "attributes" },
+            { id: "notes" },
+            { id: "effects" }
+          ],
+          initial: "attributes",
+          labelPrefix: "DeusExLudus.Sheets.Tabs"
+        }
+      };
+    }
+
     return initialized;
   }
 
@@ -306,15 +342,26 @@ class CharacterSheet extends api.HandlebarsApplicationMixin(sheets.ActorSheet) {
     app.document.update({ [`system.attributes.${attribute}.value`]: newValue });
   }
 
-  static #editItem(event, app) {
-    const itemId = event.target.closest('.item').dataset.itemId;
+  static #viewDoc(event, app) {
+    const itemId = event.target.closest('[data-item-id]').dataset.itemId;
     const item = app.document.items.get(itemId);
     item.sheet.render(true);
   }
 
-  static #deleteItem(event, app) {
-    const itemId = event.target.closest('.item').dataset.itemId;
+  static #createDoc(event, app) {
+    const type = event.target.dataset.type;
+    app.document.createEmbeddedDocuments("Item", [{ type }]);
+  }
+
+  static #deleteDoc(event, app) {
+    const itemId = event.target.closest('[data-item-id]').dataset.itemId;
     app.document.deleteEmbeddedDocuments("Item", [itemId]);
+  }
+
+  static #toggleEffect(event, app) {
+    const effectId = event.target.closest('[data-effect-id]').dataset.effectId;
+    const effect = app.document.effects.get(effectId);
+    effect.update({ disabled: !effect.disabled });
   }
 
   static #viewDoc(event, app) {
