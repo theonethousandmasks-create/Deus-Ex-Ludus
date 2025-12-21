@@ -3,9 +3,6 @@ import { CharacterDataModel, NpcDataModel, SettlementDataModel, SkillDataModel, 
 import { CharacterSheet, NpcSheet, SettlementSheet, SkillSheet, WeaponSheet, ArmorSheet, RelicSheet } from "./module/sheets.mjs";
 
 Hooks.once("init", () => {
-  // Register Handlebars helpers
-  Handlebars.registerHelper('eq', (a, b) => a === b);
-
   // Configure custom Document implementations.
   CONFIG.Actor.documentClass = SystemActor;
   CONFIG.Item.documentClass = SystemItem;
