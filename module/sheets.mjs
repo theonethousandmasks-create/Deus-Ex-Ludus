@@ -16,6 +16,7 @@ export class CharacterSheet extends ActorSheet {
     html.find('.skill button').click(this._onRollSkill.bind(this));
     html.find('.item-edit').click(this._onItemEdit.bind(this));
     html.find('.item-delete').click(this._onItemDelete.bind(this));
+    html.find('button[data-action]').click(this._onAttributeChange.bind(this));
   }
 
   _onRollSkill(event) {
@@ -36,6 +37,15 @@ export class CharacterSheet extends ActorSheet {
     const itemId = event.currentTarget.closest('.item').dataset.itemId;
     this.actor.deleteEmbeddedDocuments("Item", [itemId]);
   }
+
+  _onAttributeChange(event) {
+    event.preventDefault();
+    const action = event.currentTarget.dataset.action;
+    const attribute = event.currentTarget.dataset.attribute;
+    const currentValue = this.actor.system.attributes[attribute].value;
+    const newValue = action === 'increase' ? currentValue + 1 : Math.max(0, currentValue - 1);
+    this.actor.update({ [`system.attributes.${attribute}.value`]: newValue });
+  }
 }
 
 export class NpcSheet extends CharacterSheet {
@@ -53,11 +63,11 @@ export class SkillSheet extends ItemSheet {
   }
 }
 
-export class WeaponSheet extends ItemSheet {
+export class GearSheet extends ItemSheet {
   static get defaultOptions() {
     return mergeObject(super.defaultOptions, {
       classes: ["Deus-Ex-Ludus", "sheet", "item"],
-      template: "templates/item/weapon-sheet.html",
+      template: "templates/item/gear-sheet.html",
       width: 400,
       height: 400
     });
@@ -69,6 +79,17 @@ export class ArmorSheet extends ItemSheet {
     return mergeObject(super.defaultOptions, {
       classes: ["Deus-Ex-Ludus", "sheet", "item"],
       template: "templates/item/armor-sheet.html",
+      width: 400,
+      height: 400
+    });
+  }
+}
+
+export class RelicSheet extends ItemSheet {
+  static get defaultOptions() {
+    return mergeObject(super.defaultOptions, {
+      classes: ["Deus-Ex-Ludus", "sheet", "item"],
+      template: "templates/item/relic-sheet.html",
       width: 400,
       height: 400
     });

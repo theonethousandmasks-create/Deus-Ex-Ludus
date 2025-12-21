@@ -1,6 +1,6 @@
 import { SystemActor, SystemItem } from "./module/documents.mjs";
-import { CharacterDataModel, NpcDataModel, SkillDataModel, WeaponDataModel, ArmorDataModel } from "./module/data-models.mjs";
-import { CharacterSheet, NpcSheet, SkillSheet, WeaponSheet, ArmorSheet } from "./module/sheets.mjs";
+import { CharacterDataModel, NpcDataModel, SkillDataModel, GearDataModel, ArmorDataModel, RelicDataModel } from "./module/data-models.mjs";
+import { CharacterSheet, NpcSheet, SkillSheet, GearSheet, ArmorSheet, RelicSheet } from "./module/sheets.mjs";
 
 Hooks.once("init", () => {
   // Configure custom Document implementations.
@@ -14,18 +14,19 @@ Hooks.once("init", () => {
   };
   CONFIG.Item.dataModels = {
     skill: SkillDataModel,
-    weapon: WeaponDataModel,
-    armor: ArmorDataModel
+    gear: GearDataModel,
+    armor: ArmorDataModel,
+    relic: RelicDataModel
   };
 
   // Configure trackable attributes.
   CONFIG.Actor.trackableAttributes = {
     character: {
-      bar: ["attributes.health"],
+      bar: ["attributes.health", "attributes.faith"],
       value: []
     },
     npc: {
-      bar: ["attributes.health"],
+      bar: ["attributes.health", "attributes.faith"],
       value: []
     }
   };
@@ -43,11 +44,14 @@ Hooks.once("init", () => {
     skill: {
       "Deus-Ex-Ludus.SkillSheet": SkillSheet
     },
-    weapon: {
-      "Deus-Ex-Ludus.WeaponSheet": WeaponSheet
+    gear: {
+      "Deus-Ex-Ludus.GearSheet": GearSheet
     },
     armor: {
       "Deus-Ex-Ludus.ArmorSheet": ArmorSheet
+    },
+    relic: {
+      "Deus-Ex-Ludus.RelicSheet": RelicSheet
     }
   };
 });

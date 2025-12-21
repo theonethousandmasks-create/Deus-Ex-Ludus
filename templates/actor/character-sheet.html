@@ -4,10 +4,20 @@
     <div class="header-fields">
       <h1 class="charname"><input name="name" type="text" value="{{actor.name}}" placeholder="Name"/></h1>
       <div class="health flexrow">
-        <label>Health</label>
+        <label>{{localize "HP"}}</label>
+        <button type="button" data-action="decrease" data-attribute="health">-</button>
         <input type="number" name="system.attributes.health.value" value="{{system.attributes.health.value}}" min="0" max="{{system.attributes.health.max}}"/>
         <span>/</span>
         <input type="number" name="system.attributes.health.max" value="{{system.attributes.health.max}}" min="0"/>
+        <button type="button" data-action="increase" data-attribute="health">+</button>
+      </div>
+      <div class="faith flexrow">
+        <label>{{localize "FP"}}</label>
+        <button type="button" data-action="decrease" data-attribute="faith">-</button>
+        <input type="number" name="system.attributes.faith.value" value="{{system.attributes.faith.value}}" min="0" max="{{system.attributes.faith.max}}"/>
+        <span>/</span>
+        <input type="number" name="system.attributes.faith.max" value="{{system.attributes.faith.max}}" min="0"/>
+        <button type="button" data-action="increase" data-attribute="faith">+</button>
       </div>
     </div>
   </header>

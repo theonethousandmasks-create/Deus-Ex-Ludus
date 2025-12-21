@@ -11,6 +11,10 @@ class ActorDataModel extends foundry.abstract.TypeDataModel {
         health: new SchemaField({
           value: new NumberField({ required: true, integer: true, min: 0, initial: 10 }),
           max: new NumberField({ required: true, integer: true, min: 0, initial: 10 })
+        }),
+        faith: new SchemaField({
+          value: new NumberField({ required: true, integer: true, min: 0, initial: 5 }),
+          max: new NumberField({ required: true, integer: true, min: 0, initial: 10 })
         })
       })
     };
@@ -56,7 +60,7 @@ export class SkillDataModel extends ItemDataModel {
   }
 }
 
-export class WeaponDataModel extends ItemDataModel {
+export class GearDataModel extends ItemDataModel {
   static defineSchema() {
     return {
       ...super.defineSchema(),
@@ -72,4 +76,8 @@ export class ArmorDataModel extends ItemDataModel {
       defense: new NumberField({ required: true, integer: true, min: 0, initial: 2 })
     };
   }
+}
+
+export class RelicDataModel extends ItemDataModel {
+  // For now, same as base item, just description
 }
