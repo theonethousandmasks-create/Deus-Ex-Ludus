@@ -4,9 +4,19 @@ export class CharacterSheet extends ActorSheet {
       classes: ["Deus-Ex-Ludus", "sheet", "actor"],
       template: "templates/actor/character-sheet.html",
       width: 800,
-      height: 800,
-      tabs: [{ navSelector: ".sheet-tabs", contentSelector: ".sheet-body", initial: "attributes", group: "primary" }]
+      height: 800
     });
+  }
+
+  constructor(...args) {
+    super(...args);
+    this.currentTab = 'attributes';
+  }
+
+  getData() {
+    const data = super.getData();
+    data.currentTab = this.currentTab;
+    return data;
   }
 
   activateListeners(html) {
@@ -16,6 +26,7 @@ export class CharacterSheet extends ActorSheet {
     html.find('.item-delete').click(this._onItemDelete.bind(this));
     html.find('button[data-action]').click(this._onAttributeChange.bind(this));
     html.find('.item-description').change(this._onItemDescriptionChange.bind(this));
+    html.find('.tab-button').click(this._onTabChange.bind(this));
   }
 
   _onRollSkill(event) {
@@ -52,6 +63,12 @@ export class CharacterSheet extends ActorSheet {
     const newDescription = event.currentTarget.value;
     const item = this.actor.items.get(itemId);
     item.update({ 'system.description': newDescription });
+  }
+
+  _onTabChange(event) {
+    event.preventDefault();
+    this.currentTab = event.currentTarget.dataset.tab;
+    this.render();
   }
 }
 

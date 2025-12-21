@@ -9,13 +9,13 @@
   padding: 0.5rem;
 }
 
-.tabs {
+.tab-buttons {
   display: flex;
   margin-bottom: 1rem;
   border-bottom: 1px solid #ccc;
 }
 
-.tabs .item {
+.tab-button {
   padding: 0.5rem 1rem;
   background: #eee;
   border: 1px solid #ccc;
@@ -26,19 +26,14 @@
   top: 1px;
 }
 
-.tabs .item.active {
+.tab-button.active {
   background: #fff;
   border-bottom: 1px solid #fff;
   font-weight: bold;
 }
 
 .tab {
-  display: none;
   padding: 1rem 0;
-}
-
-.tab.active {
-  display: block;
 }
 
 .form-group {
