@@ -1,4 +1,4 @@
-import { NumberField, SchemaField, StringField, TypeDataModel } from "foundry:api";
+const { NumberField, SchemaField, StringField, TypeDataModel } = foundry.data.fields;
 
 /* -------------------------------------------- */
 /*  Actor Models                                */

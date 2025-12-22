@@ -1,4 +1,4 @@
-import { Actor, Item, ChatMessage, Roll } from "foundry:api";
+const { Actor, Item, ChatMessage, Roll } = foundry.data.fields;
 
 export class SystemActor extends Actor {
   async rollAbility(abilityName) {

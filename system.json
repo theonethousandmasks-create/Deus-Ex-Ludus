@@ -4,8 +4,8 @@
   "description": "A d100 target number system by FoxMaid Games (Beta)",
   "version": "0.1.0",
   "compatibility": {
-    "minimum": "13.351",
-    "verified": "13.351"
+    "minimum": "13",
+    "verified": "13"
   },
   "authors": [{
     "name": "FoxMaid Games"
@@ -38,7 +38,7 @@
   },
   "primaryTokenAttribute": "health",
   "secondaryTokenAttribute": null,
-  "url": "https://github.com/FoxMaidGames/Deus-Ex-Ludus",
-  "manifest": "https://github.com/FoxMaidGames/Deus-Ex-Ludus/releases/download/v0.1.0/system.json",
-  "download": "https://github.com/FoxMaidGames/Deus-Ex-Ludus/releases/download/v0.1.0/Deus-Ex-Ludus.zip"
+  "url": "https://github.com/theonethousandmasks-create/Deus-Ex-Ludus.git",
+  "manifest": "https://github.com/theonethousandmasks-create/Deus-Ex-Ludus/releases/download/v0.1.0/system.json",
+  "download": "https://github.com/theonethousandmasks-create/Deus-Ex-Ludus/releases/download/v0.1.0/Deus-Ex-Ludus.zip"
 }

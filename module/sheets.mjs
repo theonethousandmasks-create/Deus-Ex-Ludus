@@ -1,4 +1,4 @@
-import { ActorSheet, ItemSheet, mergeObject } from "foundry:api";
+const { ActorSheet, ItemSheet, mergeObject } = foundry.data.fields;
 
 export class CharacterSheet extends ActorSheet {
   static get defaultOptions() {
