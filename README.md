@@ -16,7 +16,7 @@ This repository contains the Foundry VTT system implementation for Deus Ex Ludus
 ### Installation
 
 1. Download or clone this repository.
-2. Place the `deus-ex-ludus` folder in your Foundry VTT `Data/systems` directory.
+2. Place the `Deus-Ex-Ludus` folder in your Foundry VTT `Data/systems` directory make sure it has the name `Deus-Ex-Ludus` with no other additions.
 3. Launch Foundry VTT and select "Deus Ex Ludus" as the system for a new world.
 
 ### Usage
