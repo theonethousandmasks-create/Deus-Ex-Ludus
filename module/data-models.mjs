@@ -7,12 +7,17 @@ import { NumberField, SchemaField, StringField, TypeDataModel } from "foundry:ap
 class ActorDataModel extends TypeDataModel {
   static defineSchema() {
     return {
-      attributes: new SchemaField({
-        health: new SchemaField({
-          value: new NumberField({ required: true, integer: true, min: 0, initial: 10 }),
-          max: new NumberField({ required: true, integer: true, min: 0, initial: 10 })
-        })
-      })
+      health: new SchemaField({
+        value: new NumberField({ required: true, integer: true, min: 0, initial: 15 }),
+        min: new NumberField({ required: true, integer: true, min: 0, initial: 0 }),
+        max: new NumberField({ required: true, integer: true, min: 0, initial: 300 })
+      }),
+      power: new SchemaField({
+        value: new NumberField({ required: true, integer: true, min: 0, initial: 5 }),
+        min: new NumberField({ required: true, integer: true, min: 0, initial: 0 }),
+        max: new NumberField({ required: true, integer: true, min: 0, initial: 150 })
+      }),
+      biography: new StringField({ required: true, blank: true })
     };
   }
 }
@@ -21,25 +26,49 @@ export class CharacterDataModel extends ActorDataModel {
   static defineSchema() {
     return {
       ...super.defineSchema(),
-      skills: new SchemaField({
-        athletics: new NumberField({ required: true, integer: true, min: 0, initial: 50 }),
-        combat: new NumberField({ required: true, integer: true, min: 0, initial: 50 }),
-        stealth: new NumberField({ required: true, integer: true, min: 0, initial: 50 }),
-        knowledge: new NumberField({ required: true, integer: true, min: 0, initial: 50 })
+      attributes: new SchemaField({
+        level: new SchemaField({
+          value: new NumberField({ required: true, integer: true, min: 1, initial: 1 })
+        })
+      }),
+      abilities: new SchemaField({
+        str: new SchemaField({
+          value: new NumberField({ required: true, integer: true, min: 0, initial: 15 })
+        }),
+        agi: new SchemaField({
+          value: new NumberField({ required: true, integer: true, min: 0, initial: 15 })
+        }),
+        tgh: new SchemaField({
+          value: new NumberField({ required: true, integer: true, min: 0, initial: 15 })
+        }),
+        wis: new SchemaField({
+          value: new NumberField({ required: true, integer: true, min: 0, initial: 15 })
+        }),
+        int: new SchemaField({
+          value: new NumberField({ required: true, integer: true, min: 0, initial: 15 })
+        }),
+        pre: new SchemaField({
+          value: new NumberField({ required: true, integer: true, min: 0, initial: 15 })
+        })
       })
     };
   }
 }
 
-export class NpcDataModel extends ActorDataModel {
-  // For now, same as character
+export class DeityDataModel extends ActorDataModel {
+  static defineSchema() {
+    return {
+      ...super.defineSchema(),
+      level: new NumberField({ required: true, integer: true, min: 1, initial: 1 })
+    };
+  }
 }
 
 /* -------------------------------------------- */
 /*  Item Models                                 */
 /* -------------------------------------------- */
 
-class ItemDataModel extends TypeDataModel {
+class BaseItemDataModel extends TypeDataModel {
   static defineSchema() {
     return {
       description: new StringField({ required: true, blank: true })
@@ -47,29 +76,26 @@ class ItemDataModel extends TypeDataModel {
   }
 }
 
-export class SkillDataModel extends ItemDataModel {
+export class ItemDataModel extends BaseItemDataModel {
   static defineSchema() {
     return {
       ...super.defineSchema(),
-      tn: new NumberField({ required: true, integer: true, min: 0, initial: 50 })
+      quantity: new NumberField({ required: true, integer: true, min: 0, initial: 1 }),
+      weight: new NumberField({ required: true, min: 0, initial: 0 }),
+      formula: new StringField({ required: true, blank: true, initial: "1d10 + 5 + @str.mod" })
     };
   }
 }
 
-export class WeaponDataModel extends ItemDataModel {
-  static defineSchema() {
-    return {
-      ...super.defineSchema(),
-      damage: new NumberField({ required: true, integer: true, min: 0, initial: 5 })
-    };
-  }
+export class TraitDataModel extends BaseItemDataModel {
+  // No additional fields
 }
 
-export class ArmorDataModel extends ItemDataModel {
+export class ForceMajeureDataModel extends BaseItemDataModel {
   static defineSchema() {
     return {
       ...super.defineSchema(),
-      defense: new NumberField({ required: true, integer: true, min: 0, initial: 2 })
+      forceMajeureLevel: new NumberField({ required: true, integer: true, min: 1, initial: 1 })
     };
   }
 }

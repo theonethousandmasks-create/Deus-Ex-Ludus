@@ -7,21 +7,21 @@ export class CharacterSheet extends ActorSheet {
       template: "templates/actor/character-sheet.html",
       width: 600,
       height: 600,
-      tabs: [{ navSelector: ".tabs", contentSelector: ".sheet-body", group: "primary", initial: "skills" }]
+      tabs: [{ navSelector: ".tabs", contentSelector: ".sheet-body", group: "primary", initial: "abilities" }]
     });
   }
 
   activateListeners(html) {
     super.activateListeners(html);
-    html.find('.skill button').click(this._onRollSkill.bind(this));
+    html.find('.ability button').click(this._onRollAbility.bind(this));
     html.find('.item-edit').click(this._onItemEdit.bind(this));
     html.find('.item-delete').click(this._onItemDelete.bind(this));
   }
 
-  _onRollSkill(event) {
+  _onRollAbility(event) {
     event.preventDefault();
-    const skill = event.currentTarget.dataset.skill;
-    this.actor.rollSkill(skill);
+    const ability = event.currentTarget.dataset.ability;
+    this.actor.rollAbility(ability);
   }
 
   _onItemEdit(event) {
@@ -42,33 +42,33 @@ export class NpcSheet extends CharacterSheet {
   // For now, same as character
 }
 
-export class SkillSheet extends ItemSheet {
+export class TraitSheet extends ItemSheet {
   static get defaultOptions() {
     return mergeObject(super.defaultOptions, {
       classes: ["Deus-Ex-Ludus", "sheet", "item"],
-      template: "templates/item/skill-sheet.html",
+      template: "templates/item/trait-sheet.html",
       width: 400,
       height: 400
     });
   }
 }
 
-export class WeaponSheet extends ItemSheet {
+export class ItemSheet extends ItemSheet {
   static get defaultOptions() {
     return mergeObject(super.defaultOptions, {
       classes: ["Deus-Ex-Ludus", "sheet", "item"],
-      template: "templates/item/weapon-sheet.html",
+      template: "templates/item/item-sheet.html",
       width: 400,
       height: 400
     });
   }
 }
 
-export class ArmorSheet extends ItemSheet {
+export class ForceMajeureSheet extends ItemSheet {
   static get defaultOptions() {
     return mergeObject(super.defaultOptions, {
       classes: ["Deus-Ex-Ludus", "sheet", "item"],
-      template: "templates/item/armor-sheet.html",
+      template: "templates/item/force-majeure-sheet.html",
       width: 400,
       height: 400
     });

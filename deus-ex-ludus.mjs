@@ -1,6 +1,6 @@
 import { SystemActor, SystemItem } from "./module/documents.mjs";
-import { CharacterDataModel, NpcDataModel, SkillDataModel, WeaponDataModel, ArmorDataModel } from "./module/data-models.mjs";
-import { CharacterSheet, NpcSheet, SkillSheet, WeaponSheet, ArmorSheet } from "./module/sheets.mjs";
+import { CharacterDataModel, NpcDataModel, DeityDataModel, ItemDataModel, TraitDataModel, ForceMajeureDataModel } from "./module/data-models.mjs";
+import { CharacterSheet, NpcSheet, TraitSheet, ItemSheet, ForceMajeureSheet } from "./module/sheets.mjs";
 
 Hooks.once("init", () => {
   // Configure custom Document implementations.
@@ -10,22 +10,27 @@ Hooks.once("init", () => {
   // Configure System Data Models.
   CONFIG.Actor.dataModels = {
     character: CharacterDataModel,
-    npc: NpcDataModel
+    npc: NpcDataModel,
+    Deity: DeityDataModel
   };
   CONFIG.Item.dataModels = {
-    skill: SkillDataModel,
-    weapon: WeaponDataModel,
-    armor: ArmorDataModel
+    item: ItemDataModel,
+    Trait: TraitDataModel,
+    ForceMajeure: ForceMajeureDataModel
   };
 
   // Configure trackable attributes.
   CONFIG.Actor.trackableAttributes = {
     character: {
-      bar: ["attributes.health"],
+      bar: ["health"],
       value: []
     },
     npc: {
-      bar: ["attributes.health"],
+      bar: ["health"],
+      value: []
+    },
+    Deity: {
+      bar: ["health"],
       value: []
     }
   };
@@ -37,17 +42,20 @@ Hooks.once("init", () => {
     },
     npc: {
       "Deus-Ex-Ludus.NpcSheet": NpcSheet
+    },
+    Deity: {
+      "Deus-Ex-Ludus.NpcSheet": NpcSheet
     }
   };
   CONFIG.Item.sheetClasses = {
-    skill: {
-      "Deus-Ex-Ludus.SkillSheet": SkillSheet
+    item: {
+      "Deus-Ex-Ludus.ItemSheet": ItemSheet
     },
-    weapon: {
-      "Deus-Ex-Ludus.WeaponSheet": WeaponSheet
+    Trait: {
+      "Deus-Ex-Ludus.TraitSheet": TraitSheet
     },
-    armor: {
-      "Deus-Ex-Ludus.ArmorSheet": ArmorSheet
+    ForceMajeure: {
+      "Deus-Ex-Ludus.ForceMajeureSheet": ForceMajeureSheet
     }
   };
 });

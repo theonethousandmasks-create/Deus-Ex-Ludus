@@ -20,12 +20,13 @@
   "documentTypes": {
     "Actor": {
       "character": {},
-      "npc": {}
+      "npc": {},
+      "Deity": {}
     },
     "Item": {
-      "skill": {},
-      "weapon": {},
-      "armor": {}
+      "item": {},
+      "Trait": {},
+      "ForceMajeure": {}
     }
   },
   "initiative": "1d100",
@@ -33,7 +34,7 @@
     "distance": 5,
     "units": "m"
   },
-  "primaryTokenAttribute": "attributes.health",
+  "primaryTokenAttribute": "health",
   "secondaryTokenAttribute": null,
   "url": "https://github.com/FoxMaidGames/Deus-Ex-Ludus",
   "manifest": "https://github.com/FoxMaidGames/Deus-Ex-Ludus/releases/download/v0.1.0/system.json",

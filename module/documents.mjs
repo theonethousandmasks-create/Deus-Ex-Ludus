@@ -1,10 +1,10 @@
 import { Actor, Item, ChatMessage, Roll } from "foundry:api";
 
 export class SystemActor extends Actor {
-  async rollSkill(skillName) {
-    const tn = this.system.skills[skillName];
+  async rollAbility(abilityName) {
+    const tn = this.system.abilities[abilityName]?.value;
     if (!tn) {
-      ui.notifications.warn(`Skill ${skillName} not found.`);
+      ui.notifications.warn(`Ability ${abilityName} not found.`);
       return;
     }
     const roll = await new Roll("1d100").evaluate();
@@ -18,7 +18,7 @@ export class SystemActor extends Actor {
       degree = Math.floor((result - tn) / 10) + 1;
       type = "failure";
     }
-    const content = `Rolled ${result} against TN ${tn} for ${skillName}. ${type === "success" ? game.i18n.localize("SUCCESS") : game.i18n.localize("FAILURE")} with ${type === "success" ? game.i18n.localize("DEGREE_OF_SUCCESS") : game.i18n.localize("DEGREE_OF_FAILURE")} ${degree}`;
+    const content = `Rolled ${result} against TN ${tn} for ${abilityName}. ${type === "success" ? game.i18n.localize("SUCCESS") : game.i18n.localize("FAILURE")} with ${type === "success" ? game.i18n.localize("DEGREE_OF_SUCCESS") : game.i18n.localize("DEGREE_OF_FAILURE")} ${degree}`;
     await ChatMessage.implementation.create({
       content: content,
       rolls: [roll]
