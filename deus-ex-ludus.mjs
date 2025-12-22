@@ -1,6 +1,6 @@
 import { SystemActor, SystemItem } from "./module/documents.mjs";
-import { CharacterDataModel, NpcDataModel, DeityDataModel, ItemDataModel, TraitDataModel, ForceMajeureDataModel } from "./module/data-models.mjs";
-import { CharacterSheet, NpcSheet, TraitSheet, ItemSheet, ForceMajeureSheet } from "./module/sheets.mjs";
+import { CharacterDataModel, NpcDataModel, DeityDataModel, ItemDataModel, TraitDataModel, ForceMajeureDataModel, RelicDataModel, ResourceDataModel } from "./module/data-models.mjs";
+import { CharacterSheet, NpcSheet, TraitSheet, ItemSheet, ForceMajeureSheet, RelicSheet, ResourceSheet } from "./module/sheets.mjs";
 
 Hooks.once("init", () => {
   // Configure custom Document implementations.
@@ -16,7 +16,9 @@ Hooks.once("init", () => {
   CONFIG.Item.dataModels = {
     item: ItemDataModel,
     Trait: TraitDataModel,
-    ForceMajeure: ForceMajeureDataModel
+    ForceMajeure: ForceMajeureDataModel,
+    Relic: RelicDataModel,
+    Resource: ResourceDataModel
   };
 
   // Configure trackable attributes.
@@ -56,6 +58,12 @@ Hooks.once("init", () => {
     },
     ForceMajeure: {
       "Deus-Ex-Ludus.ForceMajeureSheet": ForceMajeureSheet
+    },
+    Relic: {
+      "Deus-Ex-Ludus.RelicSheet": RelicSheet
+    },
+    Resource: {
+      "Deus-Ex-Ludus.ResourceSheet": ResourceSheet
     }
   };
 });

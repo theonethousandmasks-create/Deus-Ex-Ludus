@@ -74,3 +74,25 @@ export class ForceMajeureSheet extends ItemSheet {
     });
   }
 }
+
+export class RelicSheet extends ItemSheet {
+  static get defaultOptions() {
+    return mergeObject(super.defaultOptions, {
+      classes: ["Deus-Ex-Ludus", "sheet", "item"],
+      template: "templates/item/relic-sheet.html",
+      width: 400,
+      height: 400
+    });
+  }
+}
+
+export class ResourceSheet extends ItemSheet {
+  static get defaultOptions() {
+    return mergeObject(super.defaultOptions, {
+      classes: ["Deus-Ex-Ludus", "sheet", "item"],
+      template: "templates/item/resource-sheet.html",
+      width: 400,
+      height: 400
+    });
+  }
+}

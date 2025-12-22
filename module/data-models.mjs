@@ -99,3 +99,11 @@ export class ForceMajeureDataModel extends BaseItemDataModel {
     };
   }
 }
+
+export class RelicDataModel extends BaseItemDataModel {
+  // No additional fields
+}
+
+export class ResourceDataModel extends BaseItemDataModel {
+  // No additional fields
+}

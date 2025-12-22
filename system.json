@@ -26,7 +26,9 @@
     "Item": {
       "item": {},
       "Trait": {},
-      "ForceMajeure": {}
+      "ForceMajeure": {},
+      "Relic": {},
+      "Resource": {}
     }
   },
   "initiative": "1d100",
