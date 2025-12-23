@@ -1,6 +1,6 @@
-const { ActorSheet, ItemSheet, mergeObject } = foundry.data.fields;
+const { ActorSheet, ItemSheet, mergeObject } = foundry;
 
-export class CharacterSheet extends ActorSheet {
+export class CharacterSheet extends ActorSheet, import { CharacterSheet } from ".actor/character-sheet.html", {
   static get defaultOptions() {
     return mergeObject(super.defaultOptions, {
       classes: ["Deus-Ex-Ludus", "sheet", "actor"],
@@ -38,11 +38,11 @@ export class CharacterSheet extends ActorSheet {
   }
 }
 
-export class NpcSheet extends ActorSheet {
+export class NpcSheet extends ActorSheet, { import { CharacterSheet } from ".actor/character-sheet.html",
   // For now, same as character
 }
 
-export class TraitSheet extends trait-sheet.html {
+export class TraitSheet extends ItemSheet {
   static get defaultOptions() {
     return mergeObject(super.defaultOptions, {
       classes: ["Deus-Ex-Ludus", "sheet", "item"],
@@ -53,7 +53,7 @@ export class TraitSheet extends trait-sheet.html {
   }
 }
 
-export class ItemSheet extends item-sheet.html {
+export class ItemSheet extends ItemSheet {
   static get defaultOptions() {
     return mergeObject(super.defaultOptions, {
       classes: ["Deus-Ex-Ludus", "sheet", "item"],
@@ -64,7 +64,7 @@ export class ItemSheet extends item-sheet.html {
   }
 }
 
-export class ForceMajeureSheet extends force-majeure-sheet.html {
+export class ForceMajeureSheet extends .force-majeure-sheet.html", {
   static get defaultOptions() {
     return mergeObject(super.defaultOptions, {
       classes: ["Deus-Ex-Ludus", "sheet", "item"],
@@ -75,7 +75,7 @@ export class ForceMajeureSheet extends force-majeure-sheet.html {
   }
 }
 
-export class RelicSheet extends relic-sheet.html {
+export class RelicSheet extends ItemSheet {
   static get defaultOptions() {
     return mergeObject(super.defaultOptions, {
       classes: ["Deus-Ex-Ludus", "sheet", "item"],
@@ -86,7 +86,7 @@ export class RelicSheet extends relic-sheet.html {
   }
 }
 
-export class ResourceSheet extends resource-sheet.html  {
+export class ResourceSheet extends ItemSheet {
   static get defaultOptions() {
     return mergeObject(super.defaultOptions, {
       classes: ["Deus-Ex-Ludus", "sheet", "item"],
