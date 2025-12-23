@@ -42,7 +42,7 @@ export class NpcSheet extends ActorSheet {
   // For now, same as character
 }
 
-export class TraitSheet extends templates/item/trait-sheet.html {
+export class TraitSheet extends trait-sheet.html {
   static get defaultOptions() {
     return mergeObject(super.defaultOptions, {
       classes: ["Deus-Ex-Ludus", "sheet", "item"],
@@ -53,7 +53,7 @@ export class TraitSheet extends templates/item/trait-sheet.html {
   }
 }
 
-export class ItemSheet extends templates/item/item-sheet.html {
+export class ItemSheet extends item-sheet.html {
   static get defaultOptions() {
     return mergeObject(super.defaultOptions, {
       classes: ["Deus-Ex-Ludus", "sheet", "item"],
@@ -64,7 +64,7 @@ export class ItemSheet extends templates/item/item-sheet.html {
   }
 }
 
-export class ForceMajeureSheet extends templates/item/force-majeure-sheet.html {
+export class ForceMajeureSheet extends force-majeure-sheet.html {
   static get defaultOptions() {
     return mergeObject(super.defaultOptions, {
       classes: ["Deus-Ex-Ludus", "sheet", "item"],
@@ -75,7 +75,7 @@ export class ForceMajeureSheet extends templates/item/force-majeure-sheet.html {
   }
 }
 
-export class RelicSheet extends templates/item/relic-sheet.html {
+export class RelicSheet extends relic-sheet.html {
   static get defaultOptions() {
     return mergeObject(super.defaultOptions, {
       classes: ["Deus-Ex-Ludus", "sheet", "item"],
@@ -86,7 +86,7 @@ export class RelicSheet extends templates/item/relic-sheet.html {
   }
 }
 
-export class ResourceSheet extends templates/item/resource-sheet.html {
+export class ResourceSheet extends resource-sheet.html  {
   static get defaultOptions() {
     return mergeObject(super.defaultOptions, {
       classes: ["Deus-Ex-Ludus", "sheet", "item"],
