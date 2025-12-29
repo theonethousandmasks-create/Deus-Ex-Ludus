@@ -1,3 +1,4 @@
+import { CharacterSheet, NpcSheet, TraitSheet, DeusExLudusItemSheet, ForceMajeureSheet, RelicSheet, ResourceSheet } from "deus-ex-ludus.mjs";
 // Character Sheet for player characters
 export class CharacterSheet extends ActorSheet {
   static get defaultOptions() {
