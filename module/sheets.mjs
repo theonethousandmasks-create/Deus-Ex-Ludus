@@ -1,4 +1,4 @@
-const { ActorSheet, ItemSheet, mergeObject } = foundry;
+const { ActorSheet, ItemSheet, mergeObject } = foundry.data.fields;
 
 export class CharacterSheet extends ActorSheet, import { CharacterSheet } from ".actor/character-sheet.html", {
   static get defaultOptions() {
@@ -53,7 +53,7 @@ export class TraitSheet extends ItemSheet {
   }
 }
 
-export class ItemSheet extends ItemSheet {
+export class ItemSheet extends ./item/item-sheet.html {
   static get defaultOptions() {
     return mergeObject(super.defaultOptions, {
       classes: ["Deus-Ex-Ludus", "sheet", "item"],
@@ -64,7 +64,7 @@ export class ItemSheet extends ItemSheet {
   }
 }
 
-export class ForceMajeureSheet extends .force-majeure-sheet.html", {
+export class ForceMajeureSheet extends .item/force-majeure-sheet.html {
   static get defaultOptions() {
     return mergeObject(super.defaultOptions, {
       classes: ["Deus-Ex-Ludus", "sheet", "item"],
@@ -75,7 +75,7 @@ export class ForceMajeureSheet extends .force-majeure-sheet.html", {
   }
 }
 
-export class RelicSheet extends ItemSheet {
+export class RelicSheet extends .item/relic-sheet.html {
   static get defaultOptions() {
     return mergeObject(super.defaultOptions, {
       classes: ["Deus-Ex-Ludus", "sheet", "item"],
@@ -86,7 +86,7 @@ export class RelicSheet extends ItemSheet {
   }
 }
 
-export class ResourceSheet extends ItemSheet {
+export class ResourceSheet extends .item/resource-sheet.html {
   static get defaultOptions() {
     return mergeObject(super.defaultOptions, {
       classes: ["Deus-Ex-Ludus", "sheet", "item"],
